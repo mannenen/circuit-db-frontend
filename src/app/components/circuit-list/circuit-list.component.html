@@ -1,0 +1,18 @@
+<div>
+   <table>
+       <thead>
+           <tr>
+               <td>CID</td>
+               <td>Provider</td>
+               <td>Num. Customers</td>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let circuit of circuits">
+                <td>{{ circuit.cid }}</td>
+                <td>{{ circuit.provider }}</td>
+                <td>{{ circuit.customers ? circuit.customers.length : 0 }}</td>
+           </tr>
+       </tbody>
+   </table>
+</div>
