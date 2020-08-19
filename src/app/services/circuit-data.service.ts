@@ -3,13 +3,17 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Circuit } from "../models/circuit.model";
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { ApiDataService } from './api-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CircuitDataService {
+  private circuitDataUrl: string = "https://my-json-server.typicode.com/mannenen/circuit-test-data";
+  private endpoint: string = "circuits";
 
-  constructor(private http: HttpClient, private circuitDataUrl: string, private endpoint: string) { }
+  constructor(private http: HttpClient) { 
+  }
 
   getCircuits(): Observable<Array<Circuit>> {
     return this.http.get<Array<Circuit>>(`${this.circuitDataUrl}/${this.endpoint}`).pipe(

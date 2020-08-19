@@ -1,0 +1,33 @@
+{
+    "circuits": [
+        {
+            "id": 1,
+            "cid": "GcJ2LaDAZ1vXHSX7mPya",
+            "provider": "QwestLink",
+            "customers": []
+        },
+        {
+            "id": 2,
+            "cid": "nuUqf0aIU4yVdXT1Qftw",
+            "provider": "American Data Interchange, Inc., a division of Trident Industries",
+            "customers": [
+                {
+                    "id": 1,
+                    "name": "Wal-Mort",
+                    "contact": {
+                        "phone": "225-255-2552"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Balliam Street, Ltd."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "cid": "0i0gWaWnNqmB3lhcR01J",
+            "provider": "OmpiumData"
+        }
+    ]
+}
