@@ -1,14 +1,4 @@
-interface EmailOnly {
-    email: string
+export interface ContactInfo {
+    phone?: string;
+    email?: string;
 }
-
-interface PhoneOnly {
-    phone: string
-}
-
-interface EmailAndPhone {
-    email: string,
-    phone: string
-}
-
-export type ContactInfo = EmailOnly | PhoneOnly | EmailAndPhone;

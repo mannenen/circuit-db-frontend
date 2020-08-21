@@ -1,19 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CircuitListComponent } from './components/circuit-list/circuit-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { CircuitDetailComponent } from './components/circuit-detail/circuit-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CircuitListComponent
+    CircuitListComponent,
+    CircuitDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

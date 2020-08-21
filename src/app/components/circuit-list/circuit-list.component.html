@@ -1,6 +1,6 @@
 <div class="row">
     <label for="cid-filter">CID: </label>
-    <input type="text" name="cid-filter" id="cid-filter">
+    <input type="text" name="cid-filter" id="cid-filter" [(ngModel)]="listFilter">
 </div>
 <div class="row">
    <table class="striped">
@@ -12,7 +12,8 @@
            </tr>
        </thead>
        <tbody>
-           <tr *ngFor="let circuit of circuits">
+           <tr *ngFor="let circuit of filteredCircuits"
+                [routerLink]="['/circuit', circuit.id]">
                 <td>{{ circuit.cid }}</td>
                 <td>{{ circuit.provider }}</td>
                 <td>{{ circuit.customers ? circuit.customers.length : 0 }}</td>

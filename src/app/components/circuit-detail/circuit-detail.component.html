@@ -1,0 +1,24 @@
+<div class="row">
+    <p>Customer details for {{circuit.cid}}</p>
+    <p>via {{circuit.provider}}</p>
+</div>
+<div class="row">
+    <p *ngIf="circuit.customers && circuit.customers.length === 0; else elseBlock">None</p>
+    <ng-template #elseBlock>
+        <table class="striped">
+            <thead>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Phone</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of circuit.customers">
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.contact?.email ? customer.contact.email : "--" }}</td>
+                    <td>{{ customer.contact?.phone ? customer.contact.phone : "--" }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+    
+</div>

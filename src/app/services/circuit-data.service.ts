@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Circuit } from "../models/circuit.model";
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { ApiDataService } from './api-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +16,13 @@ export class CircuitDataService {
 
   getCircuits(): Observable<Array<Circuit>> {
     return this.http.get<Array<Circuit>>(`${this.circuitDataUrl}/${this.endpoint}`).pipe(
+      tap(data => console.log(`returned: ${JSON.stringify(data)}`)),
+      catchError(this.handleError)
+    );
+  }
+
+  getCircuit(id: number): Observable<Circuit> {
+    return this.http.get<Circuit>(`${this.circuitDataUrl}/${this.endpoint}/${id}`).pipe(
       tap(data => console.log(`returned: ${JSON.stringify(data)}`)),
       catchError(this.handleError)
     );
