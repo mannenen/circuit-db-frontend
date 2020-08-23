@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CircuitDataService } from '../../services/circuit-data.service';
 import { Circuit } from '../../models/circuit.model';
+import { Customer } from '../../models/customer.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: 'app-circuit-detail',
@@ -9,7 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./circuit-detail.component.scss']
 })
 export class CircuitDetailComponent implements OnInit {
-  circuit: Circuit;
+  circuit: Circuit = {
+    cid: "",
+    provider: ""    
+  };
+  
+  displayedColumns: string[] = ['name', 'email', 'phone'];
+  dataSource: MatTableDataSource<Customer>;
 
   constructor(private circuitDataService: CircuitDataService,
               private router: Router,
@@ -19,12 +27,11 @@ export class CircuitDetailComponent implements OnInit {
     const param = this.route.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
-      this.getCircuit(id);
+      this.circuitDataService.getCircuit(id).subscribe(response => {
+        this.circuit = response;
+        this.dataSource = new MatTableDataSource(this.circuit.customers);
+      });
     }
-  }
-
-  getCircuit(id: number) {
-    this.circuitDataService.getCircuit(id).subscribe(response => this.circuit = response);
   }
 
   onBack(): void {

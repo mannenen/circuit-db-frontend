@@ -1,23 +1,33 @@
-<div class="row">
-    <label for="cid-filter">CID: </label>
-    <input type="text" name="cid-filter" id="cid-filter" [(ngModel)]="listFilter">
-</div>
-<div class="row">
-   <table class="striped">
-       <thead>
-           <tr>
-               <td>CID</td>
-               <td>Provider</td>
-               <td>Num. Customers</td>
-           </tr>
-       </thead>
-       <tbody>
-           <tr *ngFor="let circuit of filteredCircuits"
-                [routerLink]="['/circuit', circuit.id]">
-                <td>{{ circuit.cid }}</td>
-                <td>{{ circuit.provider }}</td>
-                <td>{{ circuit.customers ? circuit.customers.length : 0 }}</td>
-           </tr>
-       </tbody>
-   </table>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="performFilter($event)" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="cid">
+            <th mat-header-cell *matHeaderCellDef>CID.</th>
+            <td mat-cell *matCellDef="let element">{{element.cid}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="provider">
+            <th mat-header-cell *matHeaderCellDef>Provider</th>
+            <td mat-cell *matCellDef="let element">{{element.provider}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="customers">
+            <th mat-header-cell *matHeaderCellDef>Num. Customers</th>
+            <td mat-cell *matCellDef="let element">{{element.customers ? element.customers.length : 0}}</td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [routerLink]="['/circuit', row.id]"></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="3">No circuits match the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator>
 </div>

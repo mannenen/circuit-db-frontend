@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Circuit } from "../../models/circuit.model";
 import { CircuitDataService } from "../../services/circuit-data.service";
-import { filter } from 'rxjs/operators';
+import { MatTableDataSource } from "@angular/material/table";
+import { MatPaginator } from "@angular/material/paginator";
 
 @Component({
   selector: 'app-circuit-list',
@@ -9,35 +10,30 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./circuit-list.component.scss']
 })
 export class CircuitListComponent implements OnInit {
-  circuits: Array<Circuit>;
-  filteredCircuits: Array<Circuit>;
+  displayedColumns: string[] = ['cid', 'provider', 'customers'];
+  dataSource: MatTableDataSource<Circuit>;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private circuitDataService: CircuitDataService) { }
 
   ngOnInit(): void {
     this.circuitDataService.getCircuits().subscribe({
       next: circuits => {
-        this.circuits = circuits;
-        this.filteredCircuits = circuits;
+        this.dataSource = new MatTableDataSource<Circuit>(circuits);
+        this.dataSource.paginator = this.paginator;
       },
       error(err) { console.error(err) }
     });
   }
 
-  // thank you, github.com/DeborahK
-  private _listFilter: string = '';
-  get listFilter(): string {
-    return this._listFilter;
-  }
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredCircuits = (this.listFilter ? this.performFilter(this.listFilter) : this.circuits);
-  }
+  performFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
 
-  performFilter(filterBy: string): Array<Circuit> {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.circuits.filter((circuit) => {
-      return circuit.cid.toLocaleLowerCase().indexOf(filterBy) !== -1;
-    });
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
+  
 }
