@@ -1,12 +1,11 @@
-<mat-form-field color="accent">
+<mat-form-field color="primary">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="performFilter($event)" #input>
 </mat-form-field>
-
-<div class="mat-elevation-z8">
+<mat-card>
     <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="cid">
-            <th mat-header-cell *matHeaderCellDef>CID.</th>
+            <th mat-header-cell *matHeaderCellDef>CID</th>
             <td mat-cell *matCellDef="let element">{{element.cid}}</td>
         </ng-container>
     
@@ -25,9 +24,11 @@
             [routerLink]="['/circuit', row.id]"></tr>
     
         <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="3">No circuits match the filter "{{input.value}}"</td>
+            <td class="mat-cell" colspan="3">No circuits</td>
         </tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator>
-</div>
+    
+    <button mat-flat-button color="primary" [routerLink]="['/circuits/new']">Add New Circuit</button>
+</mat-card>

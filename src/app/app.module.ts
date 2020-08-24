@@ -12,12 +12,16 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatDividerModule } from "@angular/material/divider";
 
 // app components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CircuitListComponent } from './components/circuit-list/circuit-list.component';
 import { CircuitDetailComponent } from './components/circuit-detail/circuit-detail.component';
+import { CircuitEntryComponent } from './components/circuit-entry/circuit-entry.component';
 import { SnackBarErrorHandler } from "./error-handler";
 
 
@@ -25,7 +29,8 @@ import { SnackBarErrorHandler } from "./error-handler";
   declarations: [
     AppComponent,
     CircuitListComponent,
-    CircuitDetailComponent
+    CircuitDetailComponent,
+    CircuitEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,10 @@ import { SnackBarErrorHandler } from "./error-handler";
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: SnackBarErrorHandler }
