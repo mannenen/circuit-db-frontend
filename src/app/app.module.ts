@@ -1,5 +1,5 @@
 // angular "core" imports
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CircuitListComponent } from './components/circuit-list/circuit-list.component';
 import { CircuitDetailComponent } from './components/circuit-detail/circuit-detail.component';
+import { SnackBarErrorHandler } from "./error-handler";
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { CircuitDetailComponent } from './components/circuit-detail/circuit-deta
     MatPaginatorModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: SnackBarErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

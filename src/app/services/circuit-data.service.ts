@@ -8,21 +8,20 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CircuitDataService {
-  private circuitDataUrl: string = "https://my-json-server.typicode.com/mannenen/circuit-test-data";
-  private endpoint: string = "circuits";
+  private circuitDataUrl: string = "http://localhost:5000/v1/circuits";
 
   constructor(private http: HttpClient) { 
   }
 
   getCircuits(): Observable<Array<Circuit>> {
-    return this.http.get<Array<Circuit>>(`${this.circuitDataUrl}/${this.endpoint}`).pipe(
+    return this.http.get<Array<Circuit>>(`${this.circuitDataUrl}`).pipe(
       tap(data => console.log(`returned: ${JSON.stringify(data)}`)),
       catchError(this.handleError)
     );
   }
 
   getCircuit(id: number): Observable<Circuit> {
-    return this.http.get<Circuit>(`${this.circuitDataUrl}/${this.endpoint}/${id}`).pipe(
+    return this.http.get<Circuit>(`${this.circuitDataUrl}/${id}`).pipe(
       tap(data => console.log(`returned: ${JSON.stringify(data)}`)),
       catchError(this.handleError)
     );
