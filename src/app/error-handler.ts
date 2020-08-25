@@ -11,6 +11,7 @@ export class SnackBarErrorHandler implements ErrorHandler {
                 private readonly zone: NgZone) {}
 
     handleError(error: any) {
+        console.error(error);
         this.zone.run(() => {
             this.snackBar.open(error, "OK");
         })

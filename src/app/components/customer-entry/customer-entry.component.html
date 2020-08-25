@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add Customer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form id="customer-entry-form" (submit)="createCustomer()">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput (keyup)="checkSubmit($event)" placeholder="Name" name="name" [(ngModel)]="name" appearance="fill" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput (keyup)="checkSubmit($event)" type="email" placeholder="contact@company.com" name="email" [(ngModel)]="email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput (keyup)="checkSubmit($event)" type="tel" placeholder="555-555-1234" name="phone" [(ngModel)]="phone">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -3,26 +3,4 @@
     <p>via {{circuit.provider}}</p>
 </div>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.contact?.email ? element.contact?.email : "--"}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="phone">
-        <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.contact?.phone ? element.contact?.phone : "--"}}</mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-    <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="3">No customers are registered on this circuit</td>
-    </tr>
-</mat-table>
+<app-customer-list [customers]="circuit.customers"></app-customer-list>

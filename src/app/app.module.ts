@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // angular material imports
 import { MatSliderModule } from "@angular/material/slider";
@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 // app components
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,8 @@ import { CircuitListComponent } from './components/circuit-list/circuit-list.com
 import { CircuitDetailComponent } from './components/circuit-detail/circuit-detail.component';
 import { CircuitEntryComponent } from './components/circuit-entry/circuit-entry.component';
 import { SnackBarErrorHandler } from "./error-handler";
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerEntryComponent } from './components/customer-entry/customer-entry.component';
 
 
 @NgModule({
@@ -30,12 +33,15 @@ import { SnackBarErrorHandler } from "./error-handler";
     AppComponent,
     CircuitListComponent,
     CircuitDetailComponent,
-    CircuitEntryComponent
+    CircuitEntryComponent,
+    CustomerListComponent,
+    CustomerEntryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -46,7 +52,8 @@ import { SnackBarErrorHandler } from "./error-handler";
     MatSnackBarModule,
     MatCardModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatAutocompleteModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: SnackBarErrorHandler }

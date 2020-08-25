@@ -1,8 +1,27 @@
 <mat-card>
     <mat-card-header>
-        Add New Circuit
+        <mat-card-title>Add New Circuit</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form id="circuit-form"></form>
+        <form id="circuit-form">
+            <mat-form-field>
+                <mat-label>Circuit ID</mat-label>
+                <input matInput placeholder="Circuit ID" appearance="fill">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Provider</mat-label>
+                <input matInput [formControl]="control" [matAutocomplete]="auto" placeholder="Provider name" appearance="fill">
+            </mat-form-field>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let provider of filteredProviders | async" [value]="option">
+                    {{ provider }}
+                </mat-option>
+            </mat-autocomplete>
+            <app-customer-list [customers]="customers"></app-customer-list>
+            <app-customer-entry (addedCustomer)="onCustomerAdded($event)"></app-customer-entry>
+            <button type="submit" mat-raised-button color="primary" class="right">Submit</button>
+            <button type="reset" mat-raised-button color="warn">Reset</button>
+
+        </form>
     </mat-card-content>
 </mat-card>
