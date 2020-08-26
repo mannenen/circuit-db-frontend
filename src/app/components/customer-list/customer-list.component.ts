@@ -18,12 +18,12 @@ export class CustomerListComponent implements OnInit {
   private _customers: Customer[] = [];
   
   displayedColumns: string[] = ['name', 'email', 'phone'];
-  dataSource: MatTableDataSource<Customer>;
+  dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
 
   constructor() { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Customer>(this._customers);
+
   }
 
 }

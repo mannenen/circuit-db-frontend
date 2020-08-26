@@ -4,17 +4,22 @@
     </mat-card-header>
     <mat-card-content>
         <form id="customer-entry-form" (submit)="createCustomer()">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
+                    {{ customer.name }}
+                </mat-option>
+            </mat-autocomplete>
             <mat-form-field>
                 <mat-label>Name</mat-label>
-                <input matInput (keyup)="checkSubmit($event)" placeholder="Name" name="name" [(ngModel)]="name" appearance="fill" required>
+                <input matInput placeholder="Name" appearance="fill" required [formControl]="control" [matAutocomplete]="auto">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput (keyup)="checkSubmit($event)" type="email" placeholder="contact@company.com" name="email" [(ngModel)]="email">
+                <input matInput type="email" placeholder="contact@company.com">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Phone</mat-label>
-                <input matInput (keyup)="checkSubmit($event)" type="tel" placeholder="555-555-1234" name="phone" [(ngModel)]="phone">
+                <input matInput type="tel" placeholder="555-555-1234">
             </mat-form-field>
         </form>
     </mat-card-content>

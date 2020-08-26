@@ -4,14 +4,18 @@ import { Circuit } from "../models/circuit.model";
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class CircuitDataService {
-  private circuitDataUrl: string = "https://my-json-server.typicode.com/mannenen/circuit-test-data/circuits";
+  // private circuitDataUrl: string = "https://my-json-server.typicode.com/mannenen/circuit-test-data/circuits";
+  // private circuitDataUrl: string = "http://localhost:5000/api/v1";
+  // private circuitDataUrl: string = "http://localhost:4200/assets/db.json";  
+  private circuitDataUrl: string = "http://localhost:3000/circuits";
 
-  constructor(private http: HttpClient) { 
-  }
+  constructor(private http: HttpClient) {}
 
   getCircuits(): Observable<Array<Circuit>> {
     return this.http.get<Array<Circuit>>(`${this.circuitDataUrl}`).pipe(

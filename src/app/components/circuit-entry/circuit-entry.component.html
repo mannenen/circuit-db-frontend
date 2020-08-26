@@ -13,7 +13,7 @@
                 <input matInput [formControl]="control" [matAutocomplete]="auto" placeholder="Provider name" appearance="fill">
             </mat-form-field>
             <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let provider of filteredProviders | async" [value]="option">
+                <mat-option *ngFor="let provider of filteredProviders | async" [value]="provider">
                     {{ provider }}
                 </mat-option>
             </mat-autocomplete>
