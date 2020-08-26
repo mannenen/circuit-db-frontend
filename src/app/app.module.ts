@@ -13,6 +13,7 @@ import { MatSliderModule } from "@angular/material/slider";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from "@angular/material/expansion";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
@@ -49,6 +50,7 @@ import { CustomerEntryComponent } from './components/customer-entry/customer-ent
     MatDividerModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatExpansionModule,
     MatPaginatorModule,
     MatFormFieldModule,
     ReactiveFormsModule,

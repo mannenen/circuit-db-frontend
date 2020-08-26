@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CircuitDataService } from '../../services/circuit-data.service';
 import { Circuit } from '../../models/circuit.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Customer } from 'src/app/models/customer.model';
 
 @Component({
   selector: 'app-circuit-detail',
@@ -30,6 +31,10 @@ export class CircuitDetailComponent implements OnInit {
 
   onBack(): void {
     this.router.navigate(['/circuits']);
+  }
+
+  onCustomerAdded(customer: Customer) {
+    this.circuit.customers.push(customer);
   }
 
 }

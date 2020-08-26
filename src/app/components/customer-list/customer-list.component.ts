@@ -26,4 +26,8 @@ export class CustomerListComponent implements OnInit {
 
   }
 
+  onCustomerAdded(customer: Customer) {
+    this.customers.push(customer);
+  }
+
 }

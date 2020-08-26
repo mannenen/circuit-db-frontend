@@ -10,7 +10,7 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Provider</mat-label>
-                <input matInput [formControl]="control" [matAutocomplete]="auto" placeholder="Provider name" appearance="fill">
+                <input matInput [formControl]="control" [matAutocomplete]="auto" placeholder="Provider name" appearance="fill" required>
             </mat-form-field>
             <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let provider of filteredProviders | async" [value]="provider">
@@ -18,7 +18,6 @@
                 </mat-option>
             </mat-autocomplete>
             <app-customer-list [customers]="customers"></app-customer-list>
-            <app-customer-entry (addedCustomer)="onCustomerAdded($event)"></app-customer-entry>
             <button type="submit" mat-raised-button color="primary" class="right">Submit</button>
             <button type="reset" mat-raised-button color="warn">Reset</button>
 
