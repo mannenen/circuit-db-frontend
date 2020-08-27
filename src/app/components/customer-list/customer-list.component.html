@@ -6,12 +6,12 @@
 
     <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.contact?.email ? element.contact?.email : "--"}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{element.contact?.email ? element.contact?.email : ""}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="phone">
         <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.contact?.phone ? element.contact?.phone : "--"}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{element.contact?.phone ? element.contact?.phone : ""}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

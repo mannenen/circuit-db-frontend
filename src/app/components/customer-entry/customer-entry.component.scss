@@ -1,9 +1,23 @@
-.mat-form-field {
-    width: 31%;
+@use "sass:math";
+
+.five-sixteenths {
+    width: math.percentage(5/16);
+    display: inline-block;
+    //margin-left: 4px;
+    //margin-right: 4px;
 }
 
-.mat-form-field ~ .mat-form-field {
-    margin-left: 16px;
+.one-sixteenth {
+    width: math.percentage(1/16);
+    display: inline-block;
+    
+}
+
+.mat-form-field {
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+    
 }
 
 .mat-card {

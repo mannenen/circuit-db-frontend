@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // angular material imports
 import { MatCardModule } from "@angular/material/card";
+import { MatIconModule } from "@angular/material/icon";
 import { MatTableModule } from "@angular/material/table";
 import { MatInputModule } from "@angular/material/input";
 import { MatSliderModule } from "@angular/material/slider";
@@ -42,6 +43,7 @@ import { CustomerEntryComponent } from './components/customer-entry/customer-ent
     FormsModule,
     BrowserModule,
     MatCardModule,
+    MatIconModule,
     MatTableModule,
     MatInputModule,
     MatButtonModule,
