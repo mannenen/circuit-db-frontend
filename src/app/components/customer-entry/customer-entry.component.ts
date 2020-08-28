@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerDataService } from 'src/app/services/customer-data.service';
-import { FormControl, FormGroup, NgForm, NgControlStatus } from '@angular/forms';
-import { Observable, VirtualTimeScheduler } from 'rxjs';
+import { FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
@@ -13,12 +13,9 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 })
 export class CustomerEntryComponent implements OnInit {
   @Output() addedCustomer = new EventEmitter<Customer>();
-  @ViewChild('formDirective') private formDirective: NgForm;
-  form = new FormGroup({
-    name: new FormControl(),
-    email: new FormControl(),
-    phone: new FormControl()
-  });
+  name = new FormControl('', this._nameValidator());
+  email = new FormControl();
+  phone = new FormControl();
 
   customers: Customer[];
   filteredCustomers: Observable<Customer[]>;
@@ -29,51 +26,56 @@ export class CustomerEntryComponent implements OnInit {
     this.customerData$.getCustomers().subscribe({
       next: customers => {
         this.customers = customers;
-        this.filteredCustomers = this.form.get('name').valueChanges
+        this.filteredCustomers = this.name.valueChanges
           .pipe(
             startWith(''),
             map(value => typeof value === 'string' ? value : value.name),
             map(value => this._filter(value))
-          )
+          );
       }
-    })
+    });
   }
 
+  // autofills email and phone with any already-available values
   onSelected(event: MatAutocompleteSelectedEvent) {
     let customer: Customer = event.option.value as Customer;
 
-    this.form.get('email').setValue(customer.contact ? customer.contact.email : "");
-    this.form.get('phone').setValue(customer.contact ? customer.contact.phone : "");
+    this.email.setValue(customer.contact ? customer.contact.email : "");
+    this.phone.setValue(customer.contact ? customer.contact.phone : "");
   }
 
   submitCustomer() {
-    const formValue = this.form.value;
     const submitted: Customer = {
-      name: formValue.name,
+      name: this.name.value,
       contact: {
-        email: formValue.email,
-        phone: formValue.phone
+        email: this.email.value,
+        phone: this.phone.value
       }
     };
     this.addedCustomer.emit(submitted);
 
-    this.resetForm();
+    this.reset();
   }
 
-  resetForm() {
-    this.form.controls['name'].setValue('');
-    this.form.controls['email'].setValue('');
-    this.form.controls['phone'].setValue('');
-
-    this.form.markAsPristine();
-    this.form.markAsUntouched();
-    this.form.updateValueAndValidity({
+  reset() {
+    this.name.reset('', {
       emitEvent: false
-    })
+    });
+    this.email.reset();
+    this.phone.reset();
   }
 
   displayFn(customer: Customer) {
     return customer && customer.name ? customer.name : '';
+  }
+
+  // this is necessary because after submitting the form, the name field is marked invalid despite the form itself being 'pristine'
+  // this allows us to reset the form state on submit without marking the name as invalid
+  private _nameValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const invalid = (control.value === '' && !control.pristine);
+      return invalid ? { required: { value: control.value } } : null;
+    }
   }
 
   private _filter(value: string): Customer[] {

@@ -1,30 +1,28 @@
-<form [formGroup]="form" #formDirective="ngForm" id="customer-entry-form">
-    <div class="five-sixteenths">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelected($event)">
-            <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
-                {{ customer.name }}
-            </mat-option>
-        </mat-autocomplete>
-        <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" appearance="fill" required formControlName="name" [matAutocomplete]="auto" #customerName>
-        </mat-form-field>
-    </div>
-    <div class="five-sixteenths">
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="email" placeholder="contact@company.com">
-        </mat-form-field>
-    </div>
-    <div class="five-sixteenths">
-        <mat-form-field>
-            <mat-label>Phone</mat-label>
-            <input matInput type="tel" formControlName="phone" placeholder="555-555-1234">
-        </mat-form-field>
-    </div>
-    <div class="one-sixteenth">
-        <button mat-icon-button color="primary" aria-label="add new customer" (click)="submitCustomer()">
-            <mat-icon>add_box</mat-icon>
-        </button>
-    </div>
-</form>
+<div class="five-sixteenths">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelected($event)">
+        <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
+            {{ customer.name }}
+        </mat-option>
+    </mat-autocomplete>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" appearance="fill" formControl="name" [matAutocomplete]="auto" #customerName>
+    </mat-form-field>
+</div>
+<div class="five-sixteenths">
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="contact@company.com">
+    </mat-form-field>
+</div>
+<div class="five-sixteenths">
+    <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput type="tel" placeholder="555-555-1234">
+    </mat-form-field>
+</div>
+<div class="one-sixteenth">
+    <button mat-icon-button color="primary" aria-label="add new customer" (click)="submitCustomer()">
+        <mat-icon>add_box</mat-icon>
+    </button>
+</div>
