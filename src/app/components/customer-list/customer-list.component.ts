@@ -25,9 +25,4 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  onCustomerAdded(customer: Customer) {
-    this.customers.push(customer);
-  }
-
 }

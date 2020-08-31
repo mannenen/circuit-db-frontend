@@ -1,28 +1,49 @@
-<div class="five-sixteenths">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelected($event)">
-        <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
-            {{ customer.name }}
-        </mat-option>
-    </mat-autocomplete>
-    <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" appearance="fill" formControl="name" [matAutocomplete]="auto" #customerName>
-    </mat-form-field>
+<div>
+    <form [formGroup]="form"
+          (ngSubmit)="onSave()"
+          novalidate>
+        <div class="five-sixteenths">
+            <mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete" 
+                                  (optionSelected)="onSelect($event)">
+                    <mat-option *ngFor="let customer of filteredCustomers | async" 
+                                [value]="customer">
+                        {{ customer.name }}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-label>Name</mat-label>
+                <input type="text" 
+                       matInput 
+                       placeholder="Name" 
+                       formControlName="name"
+                       [matAutocomplete]="auto">
+            </mat-form-field>
+        </div>
+        <div class="five-sixteenths">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email"
+                       matInput
+                       placeholder="Email"
+                       formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="five-sixteenths">
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input type="phone"
+                       matInput
+                       placeholder="Phone"
+                       formControlName="phone">
+            </mat-form-field>
+        </div>
+        <div class="one-sixteenth">
+            <button mat-icon-button 
+                    color="primary" 
+                    type="submit">
+                <mat-icon>add_box</mat-icon>
+            </button>
+        </div>
+    </form>
 </div>
-<div class="five-sixteenths">
-    <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="contact@company.com">
-    </mat-form-field>
-</div>
-<div class="five-sixteenths">
-    <mat-form-field>
-        <mat-label>Phone</mat-label>
-        <input matInput type="tel" placeholder="555-555-1234">
-    </mat-form-field>
-</div>
-<div class="one-sixteenth">
-    <button mat-icon-button color="primary" aria-label="add new customer" (click)="submitCustomer()">
-        <mat-icon>add_box</mat-icon>
-    </button>
-</div>
+{{ stagedCustomers | json }}

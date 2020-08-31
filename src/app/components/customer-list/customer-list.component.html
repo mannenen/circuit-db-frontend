@@ -21,13 +21,3 @@
         <td class="mat-cell" colspan="3">No customers </td>
     </tr>
 </mat-table>
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            Add Customer
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <ng-template matExpansionPanelContent>
-        <app-customer-entry (addedCustomer)="onCustomerAdded($event)"></app-customer-entry>
-    </ng-template>
-</mat-expansion-panel>
