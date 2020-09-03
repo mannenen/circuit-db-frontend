@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerDataService } from 'src/app/services/customer-data.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
@@ -25,6 +25,7 @@ export class CustomerEntryComponent implements OnInit {
   customers: Customer[];
   filteredCustomers: Observable<Customer[]>;
   stagedCustomers: Customer[] = [];
+  @Output() confirmedCustomers = new EventEmitter<Customer[]>();
 
   constructor(private customerData$: CustomerDataService) { }
 
@@ -41,13 +42,14 @@ export class CustomerEntryComponent implements OnInit {
     this.stagedCustomers.push({
       name: this.name.value,
       contact: {
-        email: this.email.value,
-        phone: this.phone.value
+        email: this.email.value ? this.email.value : '',
+        phone: this.phone.value ? this.phone.value : ''
       }
     });
     this.form.reset('', {
       emitEvent: false
     });
+    this._setFilter();
   }
 
   onSelect(event: MatAutocompleteSelectedEvent) {
@@ -57,7 +59,13 @@ export class CustomerEntryComponent implements OnInit {
     this.phone.setValue(cust.contact?.phone ? cust.contact.phone : '');
     this.name.setValue(cust.name);
 
+    // resets filter criteria
     this._setFilter();
+  }
+
+  confirmCustomers() {
+    this.confirmedCustomers.emit(this.stagedCustomers);
+    this.stagedCustomers = [];
   }
 
   _setFilter() {
