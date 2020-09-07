@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerDataService } from 'src/app/services/customer-data.service';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -12,7 +12,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
   styleUrls: ['./customer-entry.component.scss']
 })
 export class CustomerEntryComponent implements OnInit {
-  name: FormControl = new FormControl('', Validators.required);
+  name: FormControl = new FormControl('');
   form: FormGroup = new FormGroup({
     name: this.name,
     email: new FormControl(''),

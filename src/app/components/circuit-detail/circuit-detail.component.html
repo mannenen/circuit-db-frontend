@@ -1,7 +1,14 @@
-<div>
-    <p>Customer details for {{circuit.cid}}</p>
-    <p>via {{circuit.provider}}</p>
+<div class="row">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Customer details for {{circuit.cid}}</mat-card-title>
+            <mat-card-subtitle>via {{circuit.provider}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <app-customer-list [customers]="circuit.customers"></app-customer-list>
+        </mat-card-content>
+    </mat-card>
 </div>
-<div>
-    <app-customer-list [customers]="circuit.customers"></app-customer-list>
+<div class="row">
+    <app-customer-entry></app-customer-entry>
 </div>
