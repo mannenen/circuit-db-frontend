@@ -1,77 +1,87 @@
-<mat-card>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Add New Customers
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+    <div class="five-sixteenths">
+      <mat-form-field>
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="onSelect($event)"
+        >
+          <mat-option
+            *ngFor="let customer of filteredCustomers | async"
+            [value]="customer"
+          >
+            {{ customer.name }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-label>Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          [matAutocomplete]="auto"
+        />
+      </mat-form-field>
+    </div>
+    <div class="five-sixteenths">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="Email"
+          formControlName="email"
+        />
+      </mat-form-field>
+    </div>
+    <div class="five-sixteenths">
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input
+          type="phone"
+          matInput
+          placeholder="Phone"
+          formControlName="phone"
+        />
+      </mat-form-field>
+    </div>
+    <div class="one-sixteenth">
+      <button mat-icon-button color="primary" type="submit">
+        <mat-icon>add_box</mat-icon>
+      </button>
+    </div>
+  </form>
+
+  <mat-card *ngIf="stagedCustomers.length !== 0">
+    <mat-card-header>
+      <mat-card-title>Staged Customers</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-customer-list #customerList [customers]="stagedCustomers"></app-customer-list>
+    </mat-card-content>
+    <mat-card-content>
+      <button
+        mat-button-raised
+        color="primary"
+        type="button"
+        (click)="confirmCustomers()"
+      >
+        Confirm
+      </button>
+    </mat-card-content>
+  </mat-card>
+</mat-expansion-panel>
+
+<!-- <mat-card>
   <mat-card-header>
     <mat-card-title>Add New Customers</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="onSave()" novalidate>
-      <div class="five-sixteenths">
-        <mat-form-field>
-          <mat-autocomplete
-            #auto="matAutocomplete"
-            (optionSelected)="onSelect($event)"
-          >
-            <mat-option
-              *ngFor="let customer of filteredCustomers | async"
-              [value]="customer"
-            >
-              {{ customer.name }}
-            </mat-option>
-          </mat-autocomplete>
-          <mat-label>Name</mat-label>
-          <input
-            type="text"
-            matInput
-            placeholder="Name"
-            formControlName="name"
-            [matAutocomplete]="auto"
-          />
-        </mat-form-field>
-      </div>
-      <div class="five-sixteenths">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input
-            type="email"
-            matInput
-            placeholder="Email"
-            formControlName="email"
-          />
-        </mat-form-field>
-      </div>
-      <div class="five-sixteenths">
-        <mat-form-field>
-          <mat-label>Phone</mat-label>
-          <input
-            type="phone"
-            matInput
-            placeholder="Phone"
-            formControlName="phone"
-          />
-        </mat-form-field>
-      </div>
-      <div class="one-sixteenth">
-        <button mat-icon-button color="primary" type="submit">
-          <mat-icon>add_box</mat-icon>
-        </button>
-      </div>
-    </form>
+    
   </mat-card-content>
-</mat-card>
-<mat-card *ngIf="stagedCustomers.length !== 0">
-  <mat-card-header>
-    <mat-card-title>Staged Customers</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <app-customer-list [customers]="stagedCustomers"></app-customer-list>
-  </mat-card-content>
-  <mat-card-content>
-    <button
-      mat-button-raised
-      color="primary"
-      type="button"
-      (click)="confirmCustomers()"
-    >
-      Confirm
-    </button>
-  </mat-card-content>
-</mat-card>
+</mat-card> -->

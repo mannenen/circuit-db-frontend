@@ -23,8 +23,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 // app components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CircuitListComponent } from './components/circuit-list/circuit-list.component';
 import { SnackBarErrorHandler } from "./error-handler";
+import { CircuitListComponent } from './components/circuit-list/circuit-list.component';
 import { CircuitEntryComponent } from './components/circuit-entry/circuit-entry.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { CircuitDetailComponent } from './components/circuit-detail/circuit-detail.component';
@@ -62,7 +62,7 @@ import { CustomerEntryComponent } from './components/customer-entry/customer-ent
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: ErrorHandler, useClass: SnackBarErrorHandler }
+    // { provide: ErrorHandler, useClass: SnackBarErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

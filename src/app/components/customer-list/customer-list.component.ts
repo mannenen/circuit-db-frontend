@@ -9,26 +9,27 @@ import { SelectionModel } from '@angular/cdk/collections';
   styleUrls: ['./customer-list.component.scss']
 })
 export class CustomerListComponent implements OnInit {
-  @ViewChild('customerTable', {static: false}) table: MatTable<Customer>;
   @Input()
   get customers(): Customer[] { return this._customers; }
   set customers(value: Customer[]) { 
     this._customers = value;
     this.dataSource.data = value;
-    this.table.renderRows();
   }
+  @ViewChild('customerTable') table: MatTable<Customer>;
 
-  private _customers: Customer[];
+  private _customers: Customer[] = [];
   
-  displayedColumns: string[];
+  displayedColumns: string[] = ['name', 'email', 'phone', 'select'];
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
   selection = new SelectionModel<Customer>(true, []);
   
   constructor() { }
   
   ngOnInit(): void {
-    this.displayedColumns = ['name', 'email', 'phone', 'select'];
-    this._customers = [];
+  }
+
+  onUpdate(): void {
+    this.table.renderRows();
   }
 
   isAllSelected() {

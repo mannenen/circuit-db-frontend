@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerDataService } from 'src/app/services/customer-data.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { CustomerListComponent } from '../customer-list/customer-list.component';
 
 @Component({
   selector: 'app-customer-entry',
@@ -26,6 +27,7 @@ export class CustomerEntryComponent implements OnInit {
   filteredCustomers: Observable<Customer[]>;
   stagedCustomers: Customer[] = [];
   @Output() confirmedCustomers = new EventEmitter<Customer[]>();
+  @ViewChild('customerList') customerListComponent: CustomerListComponent;
 
   constructor(private customerData$: CustomerDataService) { }
 
@@ -39,16 +41,24 @@ export class CustomerEntryComponent implements OnInit {
   }
 
   onSave() {
-    this.stagedCustomers.push({
+    const customer = {
       name: this.name.value,
       contact: {
         email: this.email.value ? this.email.value : '',
         phone: this.phone.value ? this.phone.value : ''
       }
-    });
+    };
+    
+    this.stagedCustomers.push(customer);
+
+    if (this.customerListComponent !== undefined) {
+      this.customerListComponent.onUpdate();
+    }
+
     this.form.reset('', {
       emitEvent: false
     });
+
     this._setFilter();
   }
 
