@@ -64,24 +64,15 @@
     <mat-card-content>
       <app-customer-list #customerList [customers]="stagedCustomers"></app-customer-list>
     </mat-card-content>
-    <mat-card-content>
+    <mat-action-row>
       <button
-        mat-button-raised
+        mat-raised-button
         color="primary"
         type="button"
         (click)="confirmCustomers()"
       >
         Confirm
       </button>
-    </mat-card-content>
+    </mat-action-row>
   </mat-card>
 </mat-expansion-panel>
-
-<!-- <mat-card>
-  <mat-card-header>
-    <mat-card-title>Add New Customers</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    
-  </mat-card-content>
-</mat-card> -->
