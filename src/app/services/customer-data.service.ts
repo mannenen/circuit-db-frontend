@@ -17,4 +17,10 @@ export class CustomerDataService {
       tap(data => console.log(`[CustomerDataService] Received: ${JSON.stringify(data)}`))
     );
   }
+
+  addCustomers(customers: Customer[]) {
+    return this.http.put<Customer[]>(this.customerDataUrl, customers).pipe(
+      tap(data => console.log(`[CustomerDataService] Sending: ${JSON.stringify(data)}`))
+    );
+  }
 }

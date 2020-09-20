@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { CircuitDataService } from '../../services/circuit-data.service';
 import { Circuit } from '../../models/circuit.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
+import { CustomerListComponent } from '../customer-list/customer-list.component';
 
 @Component({
   selector: 'app-circuit-detail',
@@ -14,6 +15,7 @@ export class CircuitDetailComponent implements OnInit {
     cid: "",
     provider: ""    
   };
+  @ViewChild('customerList', {static: true}) customerList: CustomerListComponent;
   
   constructor(private circuitDataService: CircuitDataService,
               private router: Router,
@@ -33,8 +35,9 @@ export class CircuitDetailComponent implements OnInit {
     this.router.navigate(['/circuits']);
   }
 
-  onCustomerAdded(customer: Customer) {
-    this.circuit.customers.push(customer);
+  onCustomerAdded(customers: Customer[]) {
+    this.circuit.customers.push(...customers);
+    this.customerList.onUpdate();
   }
 
 }
