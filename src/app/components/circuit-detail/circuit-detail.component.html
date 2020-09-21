@@ -20,5 +20,5 @@
     </mat-card>
 </div>
 <div class="row">
-    <app-customer-entry (confirmedCustomers)="onCustomerAdded($event)"></app-customer-entry>
+    <app-customer-entry [forCircuit]="circuit.cid"></app-customer-entry>
 </div>

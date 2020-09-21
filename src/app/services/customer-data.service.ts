@@ -23,4 +23,10 @@ export class CustomerDataService {
       tap(data => console.log(`[CustomerDataService] Sending: ${JSON.stringify(data)}`))
     );
   }
+
+  addCustomersToCircuit(customers: Customer[], cid: string) {
+    return this.http.put<Customer[]>(`${this.customerDataUrl}/${cid}`, customers).pipe(
+      tap(data => console.log(`[CustomerDataService.addCustomers.ToCircuit] Sending: ${JSON.stringify(data)}`))
+    );
+  }
 }

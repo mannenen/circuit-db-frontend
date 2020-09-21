@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, Input } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerDataService } from 'src/app/services/customer-data.service';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -26,8 +26,9 @@ export class CustomerEntryComponent implements OnInit {
   customers: Customer[];
   filteredCustomers: Observable<Customer[]>;
   stagedCustomers: Customer[] = [];
-  @Output() confirmedCustomers = new EventEmitter<Customer[]>();
+  // @Output() confirmedCustomers = new EventEmitter<Customer[]>();
   @ViewChild('customerList') customerListComponent: CustomerListComponent;
+  @Input() forCircuit: string;
 
   constructor(private customerData$: CustomerDataService) { }
 
@@ -74,7 +75,8 @@ export class CustomerEntryComponent implements OnInit {
   }
 
   confirmCustomers() {
-    this.confirmedCustomers.emit(this.stagedCustomers);
+    this.customerData$.addCustomersToCircuit(this.stagedCustomers, this.forCircuit);
+    // this.confirmedCustomers.emit(this.stagedCustomers);
     this.stagedCustomers = [];
   }
 
