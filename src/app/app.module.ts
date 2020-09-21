@@ -29,6 +29,7 @@ import { CircuitEntryComponent } from './components/circuit-entry/circuit-entry.
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { CircuitDetailComponent } from './components/circuit-detail/circuit-detail.component';
 import { CustomerEntryComponent } from './components/customer-entry/customer-entry.component';
+import { LocationDisplayComponent } from './components/location-display/location-display.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CustomerEntryComponent } from './components/customer-entry/customer-ent
     CircuitEntryComponent,
     CustomerListComponent,
     CircuitDetailComponent,
-    CustomerEntryComponent
+    CustomerEntryComponent,
+    LocationDisplayComponent
   ],
   imports: [
     FormsModule,
