@@ -8,7 +8,7 @@ import { CustomerEntryComponent } from './components/customer-entry/customer-ent
 
 const appRoutes: Routes = [
   { path: "circuits", component: CircuitListComponent },
-  { path: "circuit/:id", component: CircuitDetailComponent },
+  { path: "circuit/:cid", component: CircuitDetailComponent },
   { path: "circuits/new", component: CircuitEntryComponent },
   { path: "", redirectTo: "circuits", pathMatch: "full" }
 ];

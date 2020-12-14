@@ -21,7 +21,7 @@
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            [routerLink]="['/circuit', row.id]"></tr>
+            [routerLink]="['/circuit', row.cid]"></tr>
     
         <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="3">No circuits</td>

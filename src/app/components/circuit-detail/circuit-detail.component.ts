@@ -22,10 +22,9 @@ export class CircuitDetailComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const param = this.route.snapshot.paramMap.get('id');
+    const param = this.route.snapshot.paramMap.get('cid');
     if (param) {
-      const id = +param;
-      this.circuitDataService.getCircuit(id).subscribe(response => {
+      this.circuitDataService.getCircuit(param).subscribe(response => {
         this.circuit = response;
       });
     }

@@ -24,7 +24,7 @@ export class CircuitDataService {
     );
   }
 
-  getCircuit(id: number): Observable<Circuit> {
+  getCircuit(id: string): Observable<Circuit> {
     return this.http.get<Circuit>(`${this.circuitDataUrl}/${id}`).pipe(
       tap(data => console.log(`[CircuitDataService.getCircuit] Received: ${JSON.stringify(data)}`)),
       catchError(this.handleError)
