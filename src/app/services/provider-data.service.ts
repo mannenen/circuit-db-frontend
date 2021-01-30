@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class ProviderDataService {
   // private providerUrl: string = "http://localhost:5000/v1/providers";
-  private providerUrl: string = "http://localhost:3000/providers"
+  private providerUrl: string = "http://localhost:3000/api/v1/providers"
 
   constructor(private http: HttpClient) { }
 

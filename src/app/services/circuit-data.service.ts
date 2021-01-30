@@ -10,10 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CircuitDataService {
-  // private circuitDataUrl: string = "https://my-json-server.typicode.com/mannenen/circuit-test-data/circuits";
-  // private circuitDataUrl: string = "http://localhost:5000/api/v1";
-  // private circuitDataUrl: string = "http://localhost:4200/assets/db.json";  
-  private circuitDataUrl: string = "http://localhost:3000/circuits";
+  private circuitDataUrl: string = "http://localhost:3000/api/v1/circuits";
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +39,7 @@ export class CircuitDataService {
     let errorMessage = err.error instanceof ErrorEvent ?
                        `An error occurred: ${err.error.message}` :
                        `Server returned code: ${err.status}, error message is ${err.message}`;
-    
+
     console.error(errorMessage);
     return throwError(errorMessage);
   }
