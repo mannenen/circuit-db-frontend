@@ -1,15 +1,25 @@
-export class Address {
-    
+export interface ContactInfo {
+    email?: string;
+    phone?: string;
 }
 
-export class Customer {
-
+export interface Customer {
+    name: string;
+    contact: ContactInfo;
 }
 
-export class Provider {
-    
+export interface Address {
+    street_1: string;
+    street_2: string;
+    city: string;
+    state: string;
+    zip: string;
 }
 
-export class Circuit {
-    
+export interface Circuit {
+    cid: string;
+    provider: string;
+    customers: Customer[];
+    a?: Address;
+    z?: Address;
 }
