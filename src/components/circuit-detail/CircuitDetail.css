@@ -5,13 +5,8 @@ ul {
     overflow: hidden;
 }
 
-li {
-    float: left;
-}
-
 li div {
     display: block;
-    text-align: center;
     padding: 16px;
     text-decoration: none;
 }
