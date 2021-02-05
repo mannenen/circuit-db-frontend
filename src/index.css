@@ -12,19 +12,35 @@ code {
     monospace;
 }
 
+.dotless-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .panel {
   border: solid 1px rgba(255, 255, 255, 0.05);
-  display: inline-block;
 
   padding: 8px;
-  margin-left: 16px;
-  margin-top: 16px;
+  margin: 16px;
 }
 
 .card {
   width: 400px;
-  min-height: 120px;
+  height: 100px;
+  padding-bottom: 0;
   overflow: hidden;
+}
+
+.ib {
+  display: inline-block;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }
 
 .zero-dp {
