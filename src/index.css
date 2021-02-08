@@ -27,7 +27,6 @@ code {
 .card {
   width: 400px;
   height: 100px;
-  padding-bottom: 0;
   overflow: hidden;
 }
 
@@ -41,6 +40,14 @@ code {
 
 .left {
   float: left;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.accent {
+  background-color: #2e7d32;
 }
 
 .zero-dp {

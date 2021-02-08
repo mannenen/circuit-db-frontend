@@ -1,7 +1,0 @@
-#root > div:not(:first) {
-    margin-top: 0 !important;
-};
-
-#root > div {
-    margin-bottom: 0 !important;
-}
