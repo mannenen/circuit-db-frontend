@@ -6,7 +6,7 @@ interface Props {
 }
 interface State {}
 
-export default class AddressDisplayComponent extends React.Component<Props, State> {
+export default class AddressDisplay extends React.Component<Props, State> {
     render() {
         let {street_1, street_2, city, state, zip } = this.props.address;
         return (

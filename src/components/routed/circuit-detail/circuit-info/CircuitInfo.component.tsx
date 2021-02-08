@@ -1,6 +1,6 @@
 import React from 'react';
 import { Circuit } from '../../../../models';
-import AddressDisplayComponent from './address-display/AddressDisplay.component';
+import AddressDisplay from './address-display/AddressDisplay.component';
 
 interface Props {
     circuit: Circuit
@@ -21,13 +21,13 @@ export default class CircuitInfo extends React.Component<Props, State> {
                         {
                             a &&
                             <li className="ib">
-                                <AddressDisplayComponent address={a} />
+                                <AddressDisplay address={a} />
                             </li>
                         }
                         {
                             z &&
                             <li className="ib">
-                                <AddressDisplayComponent address={z} />
+                                <AddressDisplay address={z} />
                             </li>
                         }
                         </ul>

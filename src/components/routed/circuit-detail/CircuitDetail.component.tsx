@@ -12,7 +12,7 @@ interface State {
     isLoaded: boolean;
 }
 
-export default class CircuitDetailComponent extends React.Component<Props, State> {
+export default class CircuitDetail extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {

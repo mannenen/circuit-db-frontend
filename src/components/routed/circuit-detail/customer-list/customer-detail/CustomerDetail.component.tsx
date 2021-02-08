@@ -6,7 +6,7 @@ interface Props {
 }
 interface State {}
 
-export default class CustomerDetailComponent extends React.Component<Props, State> {
+export default class CustomerDetail extends React.Component<Props, State> {
     render() {
         let name = this.props.customer.name;
         let { email, phone } = this.props.customer.contact;

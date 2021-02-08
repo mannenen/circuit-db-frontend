@@ -1,6 +1,6 @@
 import React from 'react';
 import { Customer } from '../../../../models';
-import CustomerDetailComponent from './customer-detail/CustomerDetail.component';
+import CustomerDetail from './customer-detail/CustomerDetail.component';
 
 interface Props {
     customers: Customer[]
@@ -11,7 +11,7 @@ export default class CustomerList extends React.Component<Props, State> {
     render() {
         var customers = this.props.customers.map((customer, index) => {
             return (
-                <li key={index}><CustomerDetailComponent customer={customer} /></li>
+                <li key={index}><CustomerDetail customer={customer} /></li>
             )
         })
         return (

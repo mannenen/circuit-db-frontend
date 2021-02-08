@@ -3,25 +3,21 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
-import AllCircuitsComponent from './all-circuits/AllCircuits.component';
-import CidSearchComponent from './cid-search/CidSearch.component';
-import CircuitDetailComponent from './circuit-detail/CircuitDetail.component';
-import HomeComponent from './home-component/Home.component';
+import AllCircuits from './all-circuits/AllCircuits.component';
+import CidSearch from './cid-search/CidSearch.component';
+import CircuitDetail from './circuit-detail/CircuitDetail.component';
 
 
-export default class RoutedComponent extends React.Component {
+export default class Routed extends React.Component {
     render() {
         return (
             <Switch>
-                <Route path="/search">
-                    <CidSearchComponent />
+                <Route path={["/", "/search"]}>
+                    <CidSearch />
                 </Route>
-                <Route path="/circuits/:cid" component={CircuitDetailComponent} />
+                <Route path="/circuits/:cid" component={CircuitDetail} />
                 <Route exact path="/circuits">
-                    <AllCircuitsComponent />
-                </Route>
-                <Route exact path="/">
-                    <HomeComponent />
+                    <AllCircuits />
                 </Route>
             </Switch>
         )

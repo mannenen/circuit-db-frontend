@@ -9,7 +9,7 @@ interface State {
     error?: Error
 }
 
-export default class AllCircuitsComponent extends React.Component<Props, State> {
+export default class AllCircuits extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
