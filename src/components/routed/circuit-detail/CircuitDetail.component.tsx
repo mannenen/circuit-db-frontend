@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link } from 'react-router-dom';
 import { Circuit } from '../../../models';
 import CircuitInfo from './circuit-info/CircuitInfo.component';
 import CustomerList from './customer-list/CustomerList.component';
@@ -10,6 +10,13 @@ interface Props extends RouteComponentProps<TParams> {}
 interface State {
     circuit: Circuit;
     isLoaded: boolean;
+}
+
+type LinkParams = {
+    pathname: string,
+    state: {
+        circuit: Circuit
+    }
 }
 
 export default class CircuitDetail extends React.Component<Props, State> {
@@ -42,12 +49,19 @@ export default class CircuitDetail extends React.Component<Props, State> {
 
     render() {
         let isLoaded = this.state.isLoaded;
+        let linkParam: LinkParams = {
+            pathname: `/circuits/${this.state.circuit.cid}/add-customer`,
+            state: {
+                circuit: this.state.circuit
+            }
+        };
         var jsx = 
             <div>
                 { isLoaded ? 
                     <div className="panel four-dp">
                         <CircuitInfo circuit={this.state.circuit} />
                         <CustomerList customers={this.state.circuit.customers} />
+                        <Link to={linkParam}>Add New Customer</Link>
                     </div>
                      : 
                     <div>
