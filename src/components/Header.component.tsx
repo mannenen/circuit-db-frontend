@@ -8,8 +8,6 @@ export default class Header extends React.Component {
             <div>
                 <Link to="/">Home</Link>
                 <Link to="/circuits">Circuit List</Link>
-                <Link to="/providers">Provider List</Link>
-                <Link to="/customers">Customer List</Link>
                 <Link to="/admin">Admin Tools</Link>
             </div>
         )
