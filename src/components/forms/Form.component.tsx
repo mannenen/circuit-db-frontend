@@ -39,7 +39,7 @@ const defaultFormContext: IFormContext = {
 
 export const FormContext = React.createContext<IFormContext>(defaultFormContext);
 
-export default class Form extends React.Component<IFormProps, IFormState> {
+export class Form extends React.Component<IFormProps, IFormState> {
     constructor(props: IFormProps) {
         super(props);
 
@@ -56,13 +56,13 @@ export default class Form extends React.Component<IFormProps, IFormState> {
     }
 
     private haveErrors(errors: IErrors) {
-        let haveErrors: boolean = false;
-        Object.keys(errors).forEach((error) => {
-            if (error.length > 0) {
-                haveErrors = true;
+        let haveError: boolean = false;
+        Object.keys(errors).forEach((key: string) => {
+            if (errors[key].length > 0) {
+                haveError = true;
             }
-        });
-        return haveErrors;
+        })
+        return haveError;
     }
 
     private handleSubmit = async (
@@ -101,7 +101,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
 
     private validateForm(): boolean {
         const errors: IErrors = {};
-        Object.keys(this.props.fields).map((fieldName: string) => {
+        Object.keys(this.props.fields).forEach((fieldName: string) => {
             errors[fieldName] = this.validate(fieldName);
         })
         this.setState({ errors });
@@ -121,7 +121,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
             if (response.status === 400) {
                 let responseBody: any = await response.json();
                 const errors: IErrors = {};
-                Object.keys(responseBody).map((key: string) => {
+                Object.keys(responseBody).forEach((key: string) => {
                     errors[key] = responseBody[key]
                 });
                 this.setState({ errors });

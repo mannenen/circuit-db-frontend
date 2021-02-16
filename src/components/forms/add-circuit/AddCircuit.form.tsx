@@ -1,6 +1,7 @@
 import React from 'react';
-import Form, { IFields } from '../Form.component';
+import { Form, IFields } from '../Form.component';
 import { Field } from '../Field.component';
+import { required } from '../Validators';
 
 
 export default class AddCircuitForm extends React.Component {
@@ -8,11 +9,13 @@ export default class AddCircuitForm extends React.Component {
         const fields: IFields = {
             cid: {
                 id: "cid",
-                label: "Circuit ID"
+                label: "Circuit ID",
+                validation: { rule: required }
             },
             provider: {
                 id: "provider",
-                label: "Provider"
+                label: "Provider",
+                validation: { rule: required }
             }
         }
         return (

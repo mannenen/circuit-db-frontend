@@ -1,6 +1,7 @@
 import React from 'react';
-import Form, { IFields } from '../Form.component';
+import { Form, IFields } from '../Form.component';
 import { Field } from '../Field.component';
+import { required } from '../Validators';
 
 interface Props {
     cid: string;
@@ -12,10 +13,12 @@ export default class AddCustomerForm extends React.Component<Props> {
             name: {
                 id: "name",
                 label: "Name",
+                validation: { rule: required }
             },
             email: {
                 id: "email",
-                label: "Email"
+                label: "Email",
+                validation: { rule: required }
             },
             phone: {
                 id: "phone",
