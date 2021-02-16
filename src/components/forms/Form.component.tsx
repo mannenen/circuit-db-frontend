@@ -27,14 +27,16 @@ export interface IFormState {
 
 export interface IFormContext extends IFormState {
     setValues: (values: IValues) => void;
+    validate: (fieldName: string) => void;
 }
-const defaultFormContext: IFormContext = {
-    setValues: (values: IValues) => {
 
-    },
+const defaultFormContext: IFormContext = {
+    setValues: (values: IValues) => {},
+    validate: (fieldName: string) => {},
     values: {},
     errors: {}
 }
+
 export const FormContext = React.createContext<IFormContext>(defaultFormContext);
 
 export default class Form extends React.Component<IFormProps, IFormState> {
@@ -77,23 +79,65 @@ export default class Form extends React.Component<IFormProps, IFormState> {
         }
     }
 
+    private validate = (fieldName: string): string => {
+        let newError: string = "";
+
+        if (
+            this.props.fields[fieldName] &&
+            this.props.fields[fieldName].validation
+        ) {
+            newError = this.props.fields[fieldName].validation!.rule(
+                this.state.values,
+                fieldName,
+                this.props.fields[fieldName].validation!.args
+            );
+        }
+
+        this.setState({
+            errors: { ...this.state.errors, [fieldName]: newError }
+        });
+        return newError;
+    }
+
     private validateForm(): boolean {
-        return true;
+        const errors: IErrors = {};
+        Object.keys(this.props.fields).map((fieldName: string) => {
+            errors[fieldName] = this.validate(fieldName);
+        })
+        this.setState({ errors });
+        return !this.haveErrors(errors);
     }
 
     private async submitForm(): Promise<boolean> {
-        return fetch(this.props.action, {
-            method: "POST",
-            body: JSON.stringify(this.state.values)
-        })
-        .then((response: Response) => response.ok)
+        try {
+            const response = await fetch(this.props.action, {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }),
+                body: JSON.stringify(this.state.values)
+            });
+            if (response.status === 400) {
+                let responseBody: any = await response.json();
+                const errors: IErrors = {};
+                Object.keys(responseBody).map((key: string) => {
+                    errors[key] = responseBody[key]
+                });
+                this.setState({ errors });
+            }
+            return response.ok;
+        } catch (ex) {
+            return false;
+        }
     }
 
     public render() {
         const { submitSuccess, errors } = this.state;
         const context: IFormContext = {
             ...this.state,
-            setValues: this.setValues
+            setValues: this.setValues,
+            validate: this.validate
         }
         return (
             <FormContext.Provider value={context}>

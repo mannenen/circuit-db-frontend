@@ -2,10 +2,16 @@ import React from 'react';
 import { 
     IErrors,
     IFormContext,
-    FormContext    
+    FormContext,    
+    IValues
 } from './Form.component';
 
 type Editor = "textbox" | "multilinetextbox" | "dropdown";
+
+export interface IValidation {
+    rule: (values: IValues, fieldName: string, args: any) => string;
+    args?: any;
+}
 
 export interface IFieldProps {
     id: string;
@@ -13,6 +19,8 @@ export interface IFieldProps {
     editor?: Editor;
     options?: string[];
     value?: any;
+
+    validation?: IValidation;
 }
 
 export const Field: React.FunctionComponent<IFieldProps> = ({
@@ -22,6 +30,9 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
     options,
     value
 }) => {
+    const getError = (errors: IErrors): string => (errors ? errors[id] : "");
+    const getEditorStyle = (errors: IErrors): any =>
+        getError(errors) ? { borderColor: "red" } : {};
     return (
         <FormContext.Consumer>
             {(context: IFormContext) => (
@@ -37,11 +48,9 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                                 (e: React.FormEvent<HTMLInputElement>) =>
                                     context!.setValues({ [id]: e.currentTarget.value })
                             }
-                            onBlur={
-                                (e: React.FormEvent<HTMLInputElement>) =>
-                                    console.log(e)
-                            }
+                            onBlur={() => context.validate(id)}
                             className="form-control"
+                            style={getEditorStyle(context.errors)}
                         />
                     )}
         
@@ -53,11 +62,9 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                                 (e: React.FormEvent<HTMLTextAreaElement>) =>
                                     context!.setValues({ [id]: e.currentTarget.value })
                             }
-                            onBlur={
-                                (e: React.FormEvent<HTMLTextAreaElement>) =>
-                                console.log(e)
-                            }
+                            onBlur={() => context.validate(id)}
                             className="form-control"
+                            style={getEditorStyle(context.errors)}
                         />
                     )}
         
@@ -70,11 +77,9 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                                 (e: React.FormEvent<HTMLSelectElement>) =>
                                     context!.setValues({ [id]: e.currentTarget.value })
                             }
-                            onBlur={
-                                (e: React.FormEvent<HTMLSelectElement>) =>
-                                console.log(e)
-                            }
+                            onBlur={() => context.validate(id)}
                             className="form-control"
+                            style={getEditorStyle(context.errors)}
                         >
                             {options &&
                                 options.map(option => (
@@ -84,6 +89,11 @@ export const Field: React.FunctionComponent<IFieldProps> = ({
                                 ))
                             }
                         </select>
+                    )}
+                    {getError(context.errors) && (
+                        <div style={{ color: "red", fontSize: "80%" }}>
+                            <p>{getError(context.errors)}</p>
+                        </div>
                     )}
                 </div>
             )}
