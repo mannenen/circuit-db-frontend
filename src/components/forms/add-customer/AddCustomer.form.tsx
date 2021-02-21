@@ -27,7 +27,7 @@ export default class AddCustomerForm extends React.Component<Props> {
         }
         return (
             <Form
-                action={`http://localhost:42069/api/v1/circuits/${this.props.cid}/customers`}
+                action={`http://localhost:4000/api/v1/circuits/${this.props.cid}/customers`}
                 fields={fields}
                 render={() => (
                     <React.Fragment>

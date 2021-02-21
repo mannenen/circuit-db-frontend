@@ -20,7 +20,7 @@ export default class AddCircuitForm extends React.Component {
         }
         return (
             <Form
-                action={"http://localhost:42069/api/v1/circuits"}
+                action={"http://localhost:4000/api/v1/circuits"}
                 fields={fields}
                 render={() => (
                     <React.Fragment>

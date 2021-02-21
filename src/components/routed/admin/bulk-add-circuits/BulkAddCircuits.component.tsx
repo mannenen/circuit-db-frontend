@@ -40,7 +40,7 @@ export default class BulkAddCircuits extends React.Component<IProps, IState> {
             <div>
                 <button onClick={this.addFormRow}>Add Row</button>
                 <button onClick={this.removeFormRow}>Remove Row</button>
-                <form action="http://localhost:42069/api/v1/circuits">
+                <form action="http://localhost:4000/api/v1/circuits">
                     {formRows}
                 </form>
             </div>

@@ -34,7 +34,7 @@ export default class CircuitDetail extends React.Component<Props, State> {
     
     componentDidMount() {
         let cid = this.props.match.params.cid;
-        fetch(`http://localhost:42069/api/v1/circuits/${cid}`)
+        fetch(`http://localhost:4000/api/v1/circuits/${cid}`)
             .then(response => response.json())
             .then((data: Circuit) => {
                 console.log(data);

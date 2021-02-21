@@ -19,7 +19,7 @@ export default class AllCircuits extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        fetch('http://localhost:42069/api/v1/circuits')
+        fetch('http://localhost:4000/api/v1/circuits')
             .then(response => response.json())
             .then((data: Circuit[]) => {
                 this.setState({
