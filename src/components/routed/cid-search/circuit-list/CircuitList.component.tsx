@@ -16,7 +16,7 @@ export default class CircuitList extends React.Component<Props, State> {
                     </li>;
         });
         return (
-            <ul className="flex-container">
+            <ul className="circuit-list-flex-container accent">
                 {circuits}
             </ul>
         );

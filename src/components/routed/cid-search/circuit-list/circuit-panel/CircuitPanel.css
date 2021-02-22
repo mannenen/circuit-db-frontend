@@ -1,14 +1,14 @@
-li div {
+.circuit-panel {
     display: block;
     padding: 16px;
     text-decoration: none;
 }
 
-.right {
+.circuit-panel-right {
     float: right;
 }
 
-.emphasis {
+.circuit-panel-emphasis {
     font-size: x-large;
     text-decoration: double underline;
 }

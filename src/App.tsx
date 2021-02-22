@@ -9,10 +9,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="panel two-dp">
+        <div className="panel sixteen-dp">
           <Header />
         </div>
-        <div className="panel two-dp">
+        <div className="panel sixteen-dp">
           <Routed />
         </div>
       </Router>

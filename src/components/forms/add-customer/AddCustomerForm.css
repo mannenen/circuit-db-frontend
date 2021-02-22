@@ -1,0 +1,27 @@
+input {
+    width: 100%;
+    margin-top: 8px;
+}
+
+button {
+    margin-top: 8px;
+}
+
+.add-customer-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.add-customer-flex-container > * {
+    flex: 1;
+}
+
+.add-customer-flex-item {
+    width: 100%;
+}
+
+.add-customer-flex-container > div {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

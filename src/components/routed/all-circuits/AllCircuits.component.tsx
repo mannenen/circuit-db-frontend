@@ -40,7 +40,7 @@ export default class AllCircuits extends React.Component<Props, State> {
             return (
                 <Link to={`/circuits/${circuit.cid}`}>
                     <li key={circuit.cid} className="three-dp ib">
-                        <div className="card panel">
+                        <div className="card panel accent">
                             <h3>{circuit.cid}</h3>
                             <ul className="dotless-list">
                                 <li className="ib">{circuit.provider}</li>
@@ -62,7 +62,7 @@ export default class AllCircuits extends React.Component<Props, State> {
             )
         } else {
             return (
-                <div className="accent">Loading ... </div>
+                <div>Loading ... </div>
             )
         }
     }

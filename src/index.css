@@ -1,3 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -34,20 +42,12 @@ code {
   display: inline-block;
 }
 
-.right {
-  float: right;
-}
-
-.left {
-  float: left;
-}
-
 .flex-container {
   display: flex;
 }
 
 .accent {
-  background-color: #2e7d32;
+  background-color: #85b888;
 }
 
 .zero-dp {

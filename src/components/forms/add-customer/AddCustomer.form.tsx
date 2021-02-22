@@ -8,6 +8,7 @@ import {
     ErrorMessage
 } from 'formik';
 import * as Yup from 'yup';
+import './AddCustomerForm.css';
 
 interface RouteParams { cid: string }
 interface Props extends RouteComponentProps<RouteParams> {}
@@ -53,23 +54,30 @@ export default class AddCustomerForm extends React.Component<Props, State> {
                 validationSchema={validation}
                 onSubmit={this.handleSubmit}
             >
-                {({ errors, touched }) => (
-                    <Form>
-                        <label htmlFor="name">Customer Name</label>
-                        <Field id="name" name="name" />
-                        <ErrorMessage name="name" />
+                <Form>
+                    <div className="add-customer-flex-container">
 
-                        <label htmlFor="email">Email</label>
-                        <Field id="email" name="email" type="email" />
-                        <ErrorMessage name="email" />
+                        <div className="add-customer-flex-item">
+                            <label htmlFor="name">Customer Name</label>
+                            <Field id="name" name="name" />
+                            <ErrorMessage name="name" />
+                        </div>
 
-                        <label htmlFor="phone">Phone</label>
-                        <Field id="phone" name="phone" type="phone" />
-
-                        <button type="submit">Add Customer</button>
-                    </Form>
-                )}
-                
+                        <div className="add-customer-flex-item">
+                            <label htmlFor="email">Email</label>
+                            <Field id="email" name="email" type="email" />
+                            <ErrorMessage name="email" />
+                        </div>
+                        
+                        <div className="add-customer-flex-item">
+                            <label htmlFor="phone">Phone</label>
+                            <Field id="phone" name="phone" type="phone" />
+                        </div>
+                        
+                    </div>
+                    <button type="submit">Add Customer</button>
+                </Form>
+            
             </Formik>
         );
     }

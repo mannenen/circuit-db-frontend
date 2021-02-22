@@ -1,0 +1,24 @@
+.header-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-right {
+    margin-left: auto;
+}
+
+.header-btn {
+    width: 120px;
+    height: 60px;
+
+    margin-right: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-btn:last-of-type {
+    margin-right: 0px;
+}

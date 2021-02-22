@@ -12,9 +12,9 @@ export default class CircuitPanel extends React.Component<Props, State> {
     render() {
         const { cid, customers, provider } = this.props.circuit;
         return (
-            <div className="card panel three-dp">
-                <div>CID: <span className="emphasis">{cid}</span></div>
-                <div>{provider}<span className="right">{customers.length}</span></div>
+            <div className="card panel three-dp circuit-panel-">
+                <div>CID: <span className="circuit-panel-emphasis">{cid}</span></div>
+                <div>{provider}<span className="circuit-panel-right">{customers.length}</span></div>
             </div>
         );
     }
