@@ -1,5 +1,5 @@
 import React from 'react';
-import { Circuit } from '../../../../../models';
+import { Circuit } from '../../../models';
 import './CircuitPanel.css';
 
 

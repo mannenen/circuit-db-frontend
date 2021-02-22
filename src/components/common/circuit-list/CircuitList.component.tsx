@@ -1,25 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CircuitPanel from '../circuit-panel/CircuitPanel.component';
 import { Circuit } from '../../../models';
+import './CircuitList.component.css';
 
-interface Props {}
+interface Props {
+    circuits: Circuit[]
+}
 interface State {
     circuits: Circuit[],
     isLoaded: boolean,
     error?: Error
 }
 
-export default class AllCircuits extends React.Component<Props, State> {
+export default class CircuitList extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = {
+        this.state = this.props.circuits.length === 0 ? {
             circuits: [],
             isLoaded: false
+        } : {
+            circuits: this.props.circuits.slice(),
+            isLoaded: true
         }
     }
 
     componentDidMount() {
-        fetch('http://localhost:4000/api/v1/circuits')
+        if (!this.state.isLoaded && this.state.circuits.length === 0) {
+            fetch('http://localhost:4000/api/v1/circuits')
             .then(response => response.json())
             .then((data: Circuit[]) => {
                 this.setState({
@@ -33,30 +41,26 @@ export default class AllCircuits extends React.Component<Props, State> {
                     error: error
                 })
             });
+        }
     }
 
     render() {
-        let circuits = this.state.circuits.map((circuit, index) => {
-            return (
-                <Link to={`/circuits/${circuit.cid}`}>
-                    <li key={circuit.cid} className="three-dp ib">
-                        <div className="card panel accent">
-                            <h3>{circuit.cid}</h3>
-                            <ul className="dotless-list">
-                                <li className="ib">{circuit.provider}</li>
-                                <li className="ib right">{circuit.customers.length}</li>
-                            </ul>
-                        </div>
-                    </li>
-                </Link>
-            )
-        })
+        
         if (this.state.error) {
             return (
                 <div className="accent">{this.state.error}</div>
             )
         }
         if (this.state.isLoaded) {
+            const circuits = this.state.circuits.map((circuit) => {
+                return (
+                    <Link to={`/circuits/${circuit.cid}`} key={circuit.cid}>
+                        <li>
+                           <CircuitPanel circuit={circuit} />
+                        </li>
+                    </Link>
+                );
+            });
             return (
                 <ul className="dotless-list">{circuits}</ul>
             )

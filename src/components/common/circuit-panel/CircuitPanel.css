@@ -5,7 +5,7 @@
 }
 
 .circuit-panel-right {
-    float: right;
+    margin-left: auto;
 }
 
 .circuit-panel-emphasis {
