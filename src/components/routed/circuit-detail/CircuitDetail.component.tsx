@@ -12,13 +12,6 @@ interface State {
     isLoaded: boolean;
 }
 
-type LinkParams = {
-    pathname: string,
-    state: {
-        circuit: Circuit
-    }
-}
-
 export default class CircuitDetail extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -49,19 +42,14 @@ export default class CircuitDetail extends React.Component<Props, State> {
 
     render() {
         let isLoaded = this.state.isLoaded;
-        let linkParam: LinkParams = {
-            pathname: `/circuits/${this.state.circuit.cid}/add-customer`,
-            state: {
-                circuit: this.state.circuit
-            }
-        };
+        
         var jsx = 
             <div>
                 { isLoaded ? 
                     <div className="panel four-dp">
                         <CircuitInfo circuit={this.state.circuit} />
                         <CustomerList customers={this.state.circuit.customers} />
-                        <Link to={linkParam}>Add New Customer</Link>
+                        <Link to={`/circuits/${this.state.circuit.cid}/add-customer`}>Add New Customer</Link>
                     </div>
                      : 
                     <div>
