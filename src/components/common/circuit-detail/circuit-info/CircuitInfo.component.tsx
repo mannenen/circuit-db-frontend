@@ -1,6 +1,7 @@
 import React from 'react';
 import { Circuit } from '../../../../models';
 import AddressDisplay from './address-display/AddressDisplay.component';
+import './CircuitInfo.css';
 
 interface Props {
     circuit: Circuit
@@ -11,26 +12,19 @@ export default class CircuitInfo extends React.Component<Props, State> {
     render() {
         let { provider, cid, a, z } = this.props.circuit;
         return (
-            <div>
-                <h3>Circuit ID: {cid}</h3>
-                <h4>Provided by: {provider}</h4>
+            <div className="circuit-info-grid-container">
+                <div className="circuit-info-cid">Circuit ID: {cid}</div>
+                <div className="circuit-info-provider">Provided by: {provider}</div>
                 {
-                    (a || z) && 
-                    <div className="panel">Endpoints:
-                        <ul>
-                        {
-                            a &&
-                            <li className="ib">
-                                <AddressDisplay address={a} />
-                            </li>
-                        }
-                        {
-                            z &&
-                            <li className="ib">
-                                <AddressDisplay address={z} />
-                            </li>
-                        }
-                        </ul>
+                    a &&
+                    <div className="circuit-info-a-location">
+                        <AddressDisplay address={a} />
+                    </div>
+                }
+                {
+                    z &&
+                    <div className="circuit-info-z-location">
+                        <AddressDisplay address={z} />
                     </div>
                 }
             </div>

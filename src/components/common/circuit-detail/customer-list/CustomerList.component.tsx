@@ -1,6 +1,7 @@
 import React from 'react';
 import { Customer } from '../../../../models';
 import CustomerDetail from './customer-detail/CustomerDetail.component';
+import './CustomerList.css';
 
 interface Props {
     customers: Customer[]
@@ -11,15 +12,17 @@ export default class CustomerList extends React.Component<Props, State> {
     render() {
         var customers = this.props.customers.map((customer, index) => {
             return (
-                <li key={index}><CustomerDetail customer={customer} /></li>
+                <div className="customer-list-flex-item">
+                    <CustomerDetail customer={customer} />
+                </div>
             )
         })
         return (
-            <div className="panel">
-                Customers:
-                <ul>
+            <div className="customer-list-panel">
+                <div className="customer-list-emphasis">Customers</div>
+                <div className="customer-list-flex-container">
                     {customers}
-                </ul>
+                </div>
             </div>
         )
     }

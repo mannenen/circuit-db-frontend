@@ -1,27 +1,74 @@
-input {
-    width: 100%;
-    margin-top: 8px;
+.add-customer-grid-container {
+    display: grid;
+    grid-template-areas:
+        "nameLabel nameInput"
+        ". nameError"
+        "emailLabel emailInput"
+        ". emailError"
+        "phoneLabel phoneInput"
+        ". submit";
+    grid-template-columns: 1fr 5fr;
 }
 
-button {
-    margin-top: 8px;
+.add-customer-grid-container input {
+    width: 99%;
+    margin-right: 1%;
 }
 
-.add-customer-flex-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.add-customer-grid-container button {
+    width: 30%;
+    background-color: aquamarine;
+    margin-bottom: 2%;
 }
 
-.add-customer-flex-container > * {
-    flex: 1;
+.add-customer-name-label {
+    grid-area: nameLabel;
+    justify-self: right;
+    align-self: center;
+    padding-right: 1rem;
+    margin-top: 1rem;
 }
 
-.add-customer-flex-item {
-    width: 100%;
+.add-customer-name-input {
+    grid-area: nameInput;
+    justify-self: stretch;
+    margin-top: 1rem;
 }
 
-.add-customer-flex-container > div {
-    margin-top: 8px;
-    margin-bottom: 8px;
+.add-customer-name-error {
+    grid-area: nameError;
+    margin-bottom: 1rem;
+}
+
+.add-customer-email-label {
+    grid-area: emailLabel;
+    justify-self: right;
+    align-self: center;
+    padding-right: 1rem;
+}
+
+.add-customer-email-input {
+    grid-area: emailInput;
+}
+
+.add-customer-email-error {
+    grid-area: emailError;
+    margin-bottom: 1rem;
+}
+
+.add-customer-phone-label {
+    grid-area: phoneLabel;
+    justify-self: right;
+    align-self: center;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.add-customer-phone-input {
+    grid-area: phoneInput;
+    margin-bottom: 1rem;
+}
+
+.add-customer-submit-button {
+    grid-area: submit;
 }

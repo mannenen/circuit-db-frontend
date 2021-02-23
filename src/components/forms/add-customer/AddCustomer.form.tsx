@@ -31,7 +31,7 @@ export default class AddCustomerForm extends React.Component<Props, State> {
         const cid: string = this.props.match.params.cid;
         fetch(`http://localhost:4000/api/v1/circuits/${cid}/customers`, {
             method: "post",
-            
+            body: JSON.stringify(values)
         })
     }
 
@@ -55,27 +55,27 @@ export default class AddCustomerForm extends React.Component<Props, State> {
                 onSubmit={this.handleSubmit}
             >
                 <Form>
-                    <div className="add-customer-flex-container">
+                    <div className="add-customer-grid-container">
 
-                        <div className="add-customer-flex-item">
-                            <label htmlFor="name">Customer Name</label>
-                            <Field id="name" name="name" />
+                        <label htmlFor="name" className="add-customer-name-label">Customer Name</label>
+                        <Field id="name" name="name" className="add-customer-name-input" />
+                        <div className="add-customer-name-error">
                             <ErrorMessage name="name" />
                         </div>
 
-                        <div className="add-customer-flex-item">
-                            <label htmlFor="email">Email</label>
-                            <Field id="email" name="email" type="email" />
+                        <label htmlFor="email" className="add-customer-email-label">Email</label>
+                        <Field id="email" name="email" type="email" className="add-customer-email-input" />
+                        <div className="add-customer-email-error">
                             <ErrorMessage name="email" />
                         </div>
                         
-                        <div className="add-customer-flex-item">
-                            <label htmlFor="phone">Phone</label>
-                            <Field id="phone" name="phone" type="phone" />
-                        </div>
+                        <label htmlFor="phone" className="add-customer-phone-label">Phone</label>
+                        <Field id="phone" name="phone" type="phone" className="add-customer-phone-input" />
+                        <button type="submit" className="add-customer-submit-button">Add Customer</button>
+
+                        
                         
                     </div>
-                    <button type="submit">Add Customer</button>
                 </Form>
             
             </Formik>

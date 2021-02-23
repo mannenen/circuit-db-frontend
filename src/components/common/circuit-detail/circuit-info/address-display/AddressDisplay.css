@@ -1,0 +1,33 @@
+.address-display-grid-container {
+    padding: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+    display: grid;
+    grid-gap: 1%;
+    grid-template-areas:
+        "street1 street1 street1 street1"
+        "street2 street2 street2 street2"
+        "city state . zip"
+}
+
+.address-display-street1 {
+    grid-area: street1;
+}
+
+.address-display-street2 {
+    grid-area: street2;
+}
+
+.address-display-city {
+    grid-area: city;
+}
+
+.address-display-state {
+    grid-area: state;
+}
+
+.address-display-zip {
+    grid-area: zip;
+    justify-self: right;
+}

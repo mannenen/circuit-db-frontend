@@ -1,0 +1,13 @@
+.circuit-detail-button {
+    height: 5rem;
+    width: 98%;
+    margin-left: 1%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circuit-detail-link-holder {
+    padding-bottom: 1%;
+}

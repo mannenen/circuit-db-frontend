@@ -6,7 +6,7 @@ import './Header.css';
 export default class Header extends React.Component {
     render() {
         return (
-            <div className="header-flex-container header-top">
+            <div className="header-flex-container header-margin-bottom">
                 <Link to="/" className="accent header-left header-btn">
                     Home
                 </Link>

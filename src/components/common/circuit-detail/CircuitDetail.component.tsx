@@ -3,6 +3,7 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Circuit } from '../../../models';
 import CircuitInfo from './circuit-info/CircuitInfo.component';
 import CustomerList from './customer-list/CustomerList.component';
+import './CircuitDetail.css';
 
 interface TParams { cid: string }
 interface Props extends RouteComponentProps<TParams> {}
@@ -46,10 +47,17 @@ export default class CircuitDetail extends React.Component<Props, State> {
         var jsx = 
             <div>
                 { isLoaded ? 
-                    <div className="panel four-dp">
+                    <div className="four-dp">
                         <CircuitInfo circuit={this.state.circuit} />
                         <CustomerList customers={this.state.circuit.customers} />
-                        <Link to={`/circuits/${this.state.circuit.cid}/add-customer`}>Add New Customer</Link>
+                        <div className="circuit-detail-link-holder">
+                            <Link to={`/circuits/${this.state.circuit.cid}/add-customer`}>
+                                <div className="accent circuit-detail-button">
+                                    Add New Customer
+                                </div>
+                            </Link>
+                        </div>
+                        
                     </div>
                      : 
                     <div>

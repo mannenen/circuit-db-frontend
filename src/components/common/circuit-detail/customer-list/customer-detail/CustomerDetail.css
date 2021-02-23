@@ -1,0 +1,24 @@
+.customer-detail-grid-container {
+    display: grid;
+    grid-template-areas:
+        "name name"
+        "email phone";
+    gap: 1%;
+}
+
+.customer-detail-grid-item {
+    padding: 1rem;
+}
+
+.customer-detail-name {
+    grid-area: name;
+}
+
+.customer-detail-email {
+    grid-area: email;
+}
+
+.customer-detail-phone {
+    grid-area: phone;
+    justify-self: right;
+}

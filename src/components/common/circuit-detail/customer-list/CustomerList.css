@@ -1,0 +1,21 @@
+.customer-list-panel {
+    margin: 1%;
+}
+
+.customer-list-emphasis {
+    font-size: large;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.customer-list-flex-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.customer-list-flex-item {
+    flex: 1;
+    height: 10rem;
+    margin-bottom: 1rem;
+}

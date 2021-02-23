@@ -1,5 +1,6 @@
 import React from 'react';
 import { Customer } from '../../../../../models';
+import './CustomerDetail.css';
 
 interface Props {
     customer: Customer;
@@ -11,15 +12,10 @@ export default class CustomerDetail extends React.Component<Props, State> {
         let name = this.props.customer.name;
         let { email, phone } = this.props.customer.contact;
         return (
-            <div className="panel four-dp">
-                <h4>{name}</h4>
-                <ul>
-                    <li className="ib left">{email}</li>
-                    {
-                        phone &&
-                        <li className="ib right">{phone}</li>
-                    }
-                </ul>
+            <div className="four-dp customer-detail-grid-container">
+                <div className="customer-detail-grid-item customer-detail-name">{name}</div>
+                <div className="customer-detail-grid-item customer-detail-email">{email}</div>
+                {phone && <div className="customer-detail-grid-item customer-detail-phone">{phone}</div>}
             </div>
         )
     }

@@ -1,0 +1,33 @@
+.circuit-info-grid-container {
+    display: grid;
+    gap: 1%;
+    grid-template-areas:
+        "cid cid"
+        "provider provider"
+        "a z";
+}
+
+.circuit-info-cid {
+    grid-area: cid;
+    height: 2.5rem;
+    font-size: xx-large;
+    padding-left: 1%;
+}
+
+.circuit-info-provider {
+    grid-area: provider;
+    
+    height: 3rem;
+    font-size: x-large;
+    padding-left: 1%;
+}
+
+.circuit-info-a-location {
+    grid-area: a;
+    align-self: stretch;
+}
+
+.circuit-info-z-location {
+    grid-area: z;
+    align-self: stretch;
+}
