@@ -17,7 +17,7 @@ export default class CustomerList extends React.Component<Props, State> {
         return (
             <div className="panel">
                 Customers:
-                <ul className="dotless-list">
+                <ul>
                     {customers}
                 </ul>
             </div>

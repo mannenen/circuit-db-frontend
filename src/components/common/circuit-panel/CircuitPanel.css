@@ -1,14 +1,28 @@
-.circuit-panel {
-    display: block;
-    padding: 16px;
-    text-decoration: none;
+.circuit-panel-grid-container {
+    display: grid;
+
+    gap: 0.01rem 0.01rem;
+
+    grid-template-columns: 0.9fr 0.1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "cid customers"
+        "provider customers";
 }
 
-.circuit-panel-right {
-    margin-left: auto;
+.circuit-panel-cid {
+    grid-area: cid;
+    align-self: stretch;
+    font-size: 3rem;
 }
 
-.circuit-panel-emphasis {
-    font-size: x-large;
-    text-decoration: double underline;
+.circuit-panel-provider {
+    grid-area: provider;
+    align-self: stretch;
+    font-size: 2rem;
+}
+
+.circuit-panel-customers {
+    grid-area: customers;
+    font-size: 5rem;
 }

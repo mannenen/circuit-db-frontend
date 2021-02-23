@@ -52,18 +52,17 @@ export default class CircuitList extends React.Component<Props, State> {
             )
         }
         if (this.state.isLoaded) {
-            const circuits = this.state.circuits.map((circuit) => {
-                return (
-                    <Link to={`/circuits/${circuit.cid}`} key={circuit.cid}>
-                        <li>
-                           <CircuitPanel circuit={circuit} />
-                        </li>
-                    </Link>
-                );
-            });
             return (
-                <ul className="dotless-list">{circuits}</ul>
-            )
+                <div className="circuit-list-flex-container">{
+                    this.state.circuits.map((circuit) => {
+                        return (
+                            <Link to={`/circuits/${circuit.cid}`} className="circuit-list-flex-item">
+                                <CircuitPanel circuit={circuit} />
+                            </Link>
+                        );
+                    })
+                }</div>
+            );
         } else {
             return (
                 <div>Loading ... </div>

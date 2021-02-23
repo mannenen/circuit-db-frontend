@@ -11,7 +11,7 @@ export default class AddressDisplay extends React.Component<Props, State> {
         let {street_1, street_2, city, state, zip } = this.props.address;
         return (
             <div className="card panel four-dp">
-                <ul className="dotless-list">
+                <ul>
                     <li>{street_1}</li>
                     {street_2 && <li>{street_2}</li>}
                     <li>{city}, {state} {zip}</li>

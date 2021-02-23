@@ -11,9 +11,9 @@ export default class CustomerDetail extends React.Component<Props, State> {
         let name = this.props.customer.name;
         let { email, phone } = this.props.customer.contact;
         return (
-            <div className="card panel four-dp">
+            <div className="panel four-dp">
                 <h4>{name}</h4>
-                <ul className="dotless-list">
+                <ul>
                     <li className="ib left">{email}</li>
                     {
                         phone &&

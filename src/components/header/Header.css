@@ -4,21 +4,28 @@
     align-items: center;
 }
 
+.header-top {
+    margin-top: 1%;
+}
+
+.header-left {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
 .header-right {
     margin-left: auto;
+    margin-right: 1%;
 }
 
 .header-btn {
     width: 120px;
     height: 60px;
 
-    margin-right: 16px;
+    margin-top: 1%;
+    margin-bottom: 1%;
 
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.header-btn:last-of-type {
-    margin-right: 0px;
 }
