@@ -1,5 +1,5 @@
 import React from 'react';
-import { Customer } from '../../../../../models';
+import { Customer } from '../../../models';
 import './CustomerDetail.css';
 
 interface Props {

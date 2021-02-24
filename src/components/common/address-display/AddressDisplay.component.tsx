@@ -1,5 +1,5 @@
 import React from 'react';
-import { Address } from '../../../../../models';
+import { Address } from '../../../models';
 import './AddressDisplay.css';
 
 interface Props {

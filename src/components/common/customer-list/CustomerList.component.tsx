@@ -1,6 +1,6 @@
 import React from 'react';
-import { Customer } from '../../../../models';
-import CustomerDetail from './customer-detail/CustomerDetail.component';
+import { Customer } from '../../../models';
+import CustomerDetail from '../customer-detail/CustomerDetail.component';
 import './CustomerList.css';
 
 interface Props {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { Circuit } from '../../../models';
-import CircuitInfo from './circuit-info/CircuitInfo.component';
-import CustomerList from './customer-list/CustomerList.component';
+import CircuitInfo from '../circuit-info/CircuitInfo.component';
+import CustomerList from '../customer-list/CustomerList.component';
 import './CircuitDetail.css';
 
 interface TParams { cid: string }
