@@ -17,8 +17,8 @@
 
 .add-customer-grid-container button {
     width: 30%;
-    background-color: aquamarine;
-    margin-bottom: 2%;
+    height: 75%;
+    margin-bottom: 5%;
 }
 
 .add-customer-name-label {

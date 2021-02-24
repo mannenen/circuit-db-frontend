@@ -56,7 +56,7 @@ export default class CircuitList extends React.Component<Props, State> {
                 <div className="circuit-list-flex-container">{
                     this.state.circuits.map((circuit) => {
                         return (
-                            <Link to={`/circuits/${circuit.cid}`} className="circuit-list-flex-item">
+                            <Link to={`/circuits/${circuit.cid}`} className="circuit-list-flex-item accent">
                                 <CircuitPanel circuit={circuit} />
                             </Link>
                         );

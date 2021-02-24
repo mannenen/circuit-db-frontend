@@ -19,7 +19,12 @@ export interface Address {
 export interface Circuit {
     cid: string;
     provider: string;
-    customers: Customer[];
+    customers: Customer | Customer[];
     a?: Address;
     z?: Address;
+}
+
+export interface ExternalCircuit {
+    cid: string;
+    subcircuits: Circuit | Circuit[];
 }

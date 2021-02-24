@@ -57,7 +57,7 @@ export default class AddCustomerForm extends React.Component<Props, State> {
                 <Form>
                     <div className="add-customer-grid-container">
 
-                        <label htmlFor="name" className="add-customer-name-label">Customer Name</label>
+                        <label htmlFor="name" className="add-customer-name-label">Name</label>
                         <Field id="name" name="name" className="add-customer-name-input" />
                         <div className="add-customer-name-error">
                             <ErrorMessage name="name" />
@@ -71,7 +71,7 @@ export default class AddCustomerForm extends React.Component<Props, State> {
                         
                         <label htmlFor="phone" className="add-customer-phone-label">Phone</label>
                         <Field id="phone" name="phone" type="phone" className="add-customer-phone-input" />
-                        <button type="submit" className="add-customer-submit-button">Add Customer</button>
+                        <button type="submit" className="add-customer-submit-button accent">Add Customer</button>
 
                         
                         
