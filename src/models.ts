@@ -23,8 +23,3 @@ export interface Circuit {
     a?: Address;
     z?: Address;
 }
-
-export interface ExternalCircuit {
-    cid: string;
-    subcircuits: Circuit[];
-}
